@@ -1,0 +1,1 @@
+@color-base: #2d5e8b;
