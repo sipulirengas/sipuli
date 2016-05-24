@@ -20,7 +20,7 @@ module.exports = {
     }, function (err, user) {
       if (err) return res.negotiate(err);
       if (!user) {
-
+        sails.log.info('UserController:login (1) Invalid username/password combination.');
         // If this is not an HTML-wanting browser, e.g. AJAX/sockets/cURL/etc.,
         // send a 200 response letting the user agent know the login was successful.
         // (also do this if no `invalidRedirect` was provided)
@@ -32,6 +32,8 @@ module.exports = {
       }
 
       var token = jwt.sign({user: user.id}, sails.config.jwtSecret, {expiresIn: sails.config.jwtExpires});
+
+      sails.log.info('UserController:login (2) generated token: ', token);
       return res.ok(token);
 
     });
@@ -86,7 +88,7 @@ module.exports = {
       }
 
       // Otherwise if this is an HTML-wanting browser, redirect to /welcome.
-      return res.redirect('/welcome');
+      return res.redirect('/admin');
     });
   }
 };

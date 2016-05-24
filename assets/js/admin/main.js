@@ -1,6 +1,5 @@
 
       // Var to save the JWT token in memory when we have igt
-      var jwtToken;
 
       // Simple function to transform regular links into asynchronous html loaders
       var gotoPage = function(url) {
@@ -33,7 +32,8 @@
       // When a link is clicked, instead of the default behavior (loading a page in the browser)
       // we'll make an AJAX request for the page content, and place that content in the #content DIV,
       // making this a simple SPA (single-page app)
-      $( document ).on( 'click', 'a', function(e) {
+      $( document ).on( 'click', '.get', function(e) {
+        sails.log.info('admin/main.js:gotoPage:(1): a with get found ', e);
         // Prevent the default behavior when clicking a link
         e.preventDefault();
         // Don't propagate this click to other elements on the page
@@ -57,7 +57,7 @@
           // If the login is successful, save the JWT token and load the home page
           success: function(newToken) {
             jwtToken = newToken;
-            gotoPage('/admin');
+            gotoPage('/');
           },
           // If not, update the "errors" section on the page
           error: function(jqXHR, text) {

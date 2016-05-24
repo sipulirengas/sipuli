@@ -7,17 +7,24 @@
 
 module.exports = {
   main: function (req, res) {
-    if (req.user || req.wantsJSON) {return res.redirect('/home');}
+    if (req.user || req.wantsJSON) {return res.redirect('/admin');}
     return res.view('main');
   },
-	home: function (req, res) {
-    return res.view('homepage');
+	admin: function (req, res) {
+    var token = req.headers.Authorization;
+    return res.view('admin', {
+      locals: {
+        token: token,
+        layout: 'adminLayout'
+      }
+    });
   },
   welcome: function (req, res) {
     return res.view('user/welcome');
   },
   login: function(req, res) {
-    if (req.user) {return res.redirect('/home');}
+    sails.log.info('PageController:login:(1) user: ', req.user )
+    if (req.user) {return res.redirect('/admin');}
     return res.view('user/login');
   },
   logout: function(req, res) {

@@ -34,12 +34,12 @@ module.exports.routes = {
 
   // HTML Views
   '/': 'PageController.main',
-  'get /home': 'PageController.home',
-  'get /login': 'PageController.login',
+  '/home': 'PageController.admin',
+  '/login': 'PageController.login',
   'get /signup': 'PageController.signup',
-  '/welcome': 'PageController.welcome',
+  'get /welcome': 'PageController.welcome',
   '/logout': 'PageController.logout',
-  '/profile': 'PageController.profile',
+  'get /profile': 'PageController.profile',
 
   // Endpoints
   'post /login': 'UserController.login',

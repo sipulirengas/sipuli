@@ -37,6 +37,9 @@ module.exports.connections = {
      password: '', //optional
      database: 'sipuli' //optional
    },
+   memory: {
+     adapter: 'sails-memory',
+   },
   
   /***************************************************************************
   *                                                                          *
