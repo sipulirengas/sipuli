@@ -44,7 +44,7 @@ module.exports.session = {
   *                                                                          *
   ***************************************************************************/
 
-  adapter: 'memory',
+  //adapter: 'memory',
 
   /***************************************************************************
   *                                                                          *
@@ -75,7 +75,7 @@ module.exports.session = {
   ***************************************************************************/
 
   //adapter: 'mongoDB',
-  //url: 'mongodb://localhost:27017/sipuli', // user, password and port optional
+  url: 'mongodb://localhost:27017/sipuli', // user, password and port optional
 
   /***************************************************************************
   *                                                                          *

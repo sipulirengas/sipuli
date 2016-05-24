@@ -31,15 +31,12 @@ module.exports.connections = {
 
    mongoDB: {
      adapter: 'sails-mongo',
-     host: 'localhost',
+     host: '192.168.1.100',
      port: 27017,
      user: '', //optional
      password: '', //optional
      database: 'sipuli' //optional
-   },
-   memory: {
-     adapter: 'sails-memory',
-   },
+   }
   
   /***************************************************************************
   *                                                                          *
