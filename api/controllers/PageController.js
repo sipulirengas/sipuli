@@ -15,7 +15,7 @@ module.exports = {
     return res.view('admin', {
       locals: {
         token: token,
-        layout: 'adminLayout'
+        layout: 'admin/layout'
       }
     });
   },
