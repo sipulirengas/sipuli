@@ -28,7 +28,7 @@ module.exports = {
           return res.badRequest('Invalid username/password combination.');
         }
         // Otherwise if this is an HTML-wanting browser, redirect to /login.
-        return res.view('login');
+        return res.view('admin');
       }
 
       var token = jwt.sign({user: user.id}, sails.config.jwtSecret, {expiresIn: sails.config.jwtExpires});

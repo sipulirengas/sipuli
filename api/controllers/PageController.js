@@ -6,12 +6,12 @@
  */
 
 module.exports = {
-  main: function (req, res) {
-    if (req.user || req.wantsJSON) {return res.redirect('/admin');}
-    return res.view('main');
+  home: function (req, res) {
+    if (req.user || req.wantsJSON ||  req.session.token) {return res.redirect('admin');}
+    return res.view('public/homepage');
   },
 	admin: function (req, res) {
-    var token = req.headers.Authorization;
+    var token = req.session.token;
     return res.view('admin', {
       locals: {
         token: token,
@@ -19,22 +19,28 @@ module.exports = {
       }
     });
   },
-  welcome: function (req, res) {
-    return res.view('user/welcome');
-  },
   login: function(req, res) {
-    sails.log.info('PageController:login:(1) user: ', req.user )
+    sails.log.info('PageController:login:(1) user: ', req.session.token )
     if (req.user) {return res.redirect('/admin');}
-    return res.view('user/login');
+    if (req.method == "POST"){return}
+    return res.view('login/login', {
+      locals: {
+        layout: 'login/layout'
+      }
+    });
   },
   logout: function(req, res) {
-    return res.view('user/logout');
+    return res.view('login/logout', {
+      locals: {
+        layout: 'login/layout'
+      }
+    });
   },
   signup: function(req, res) {
-    return res.view('user/signup');
+    return res.view('login/signup');
   },
   profile: function(req, res) {
-    return res.view('user/profile');
+    return res.view('admin/user/profile');
   }
 };
 

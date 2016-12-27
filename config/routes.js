@@ -32,13 +32,20 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
-  // HTML Views
-  '/': 'PageController.main',
   '/home': 'PageController.admin',
+
+  // Public Views
+  '/': 'PageController.home',
+
+  // Private views //
+
+  // Login
   '/login': 'PageController.login',
-  'get /signup': 'PageController.signup',
-  'get /welcome': 'PageController.welcome',
   '/logout': 'PageController.logout',
+  'get /signup': 'PageController.signup',
+
+  // Admin
+  '/admin': 'PageController.admin',
   'get /profile': 'PageController.profile',
 
   // Endpoints
